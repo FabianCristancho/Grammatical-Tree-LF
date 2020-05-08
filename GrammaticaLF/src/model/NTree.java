@@ -6,6 +6,7 @@ public class NTree <T>{
     private NTreeNode <T> root;
     private Comparator<T> comparator;
 
+    
     public NTree(Comparator<T> comparator) {
         this.root = null;
         this.comparator = comparator;
