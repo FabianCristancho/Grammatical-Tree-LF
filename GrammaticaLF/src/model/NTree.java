@@ -11,6 +11,7 @@ public class NTree <T>{
         this.root = null;
         this.comparator = comparator;
     }
+    
 
     public NTreeNode<T> getRoot() {
         return root;
