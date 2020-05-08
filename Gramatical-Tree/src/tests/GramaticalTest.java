@@ -12,7 +12,6 @@ public class GramaticalTest {
 		System.out.println("Ingrese los simbolos no terminales separados por coma");
 		String nonTerminals = sc.nextLine();
 
-		
 		System.out.println(
 				"Ingrese las producciones en formato NT-s1 o bien NT-s1|s2|s3... \ndonde NT representa al simbolo no terminal, y sn representa a las prodcciones respectivas");
 		System.out.println("cuando termine de ingresar las producciones, por favor digite el caracter 0");
