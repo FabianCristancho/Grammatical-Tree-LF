@@ -24,8 +24,7 @@ public class TestGrammarTree {
 				};
 		GrammarTree grammarTree = new GrammarTree(terminalSymbols, noTerminalSymbols, initialSymbol, productions);
 		
-		System.out.println(grammarTree.wordBelongs("λ"));
-		
+		System.out.println(grammarTree.wordBelongs("aaaaab"));
 		
 	}
 	
@@ -34,11 +33,7 @@ public class TestGrammarTree {
 	 * @param grammarTree
 	 * @param limitLevel
 	 */
-	public static void printGrammarTree(GrammarTree grammarTree, int limitLevel) {
-		generateTree(grammarTree, limitLevel);
-
-		String[] tree = getStringTree(grammarTree,limitLevel);
-
+	public static void printGrammarTree(String[] tree) {
 		if (tree != null)
 			for (int i = 0; i < tree.length; i++) {
 				System.out.println(tree[i]);
