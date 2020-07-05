@@ -40,6 +40,11 @@ public class MAryTree<T> {
 		return parent.childs.remove(node);
 	}
 
+	/**
+	 * Retorna todos los nodos de un nivel
+	 * @param level nivel de referencia
+	 * @return nodos
+	 */
 	public List<MAryNode<T>> getAllLevelNodes(int level) {
 		List<MAryNode<T>> nodes = new ArrayList<MAryNode<T>>();
 

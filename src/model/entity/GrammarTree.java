@@ -3,7 +3,6 @@ package model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO los simbolos T y NT no son utilizados
 /**
  * @author Andrés Felipe Chaparro Rosas
  * @date 21/04/2020
@@ -12,11 +11,11 @@ import java.util.List;
  */
 public class GrammarTree extends MAryTree<String> {
 
-	private char[]  terminalSymbols,noTerminalSymbols;
+	private String[]  terminalSymbols,noTerminalSymbols;
 	private Production[] productions;
 	private int currentLevel;
 
-	public GrammarTree(char[] terminalSymbols, char[] noTerminalSymbols, char initialSymbol, Production[] productions) {
+	public GrammarTree(String[] terminalSymbols, String[] noTerminalSymbols, char initialSymbol, Production[] productions) {
 		super(initialSymbol + "");
 		this.terminalSymbols = terminalSymbols;
 		this.noTerminalSymbols = noTerminalSymbols;
@@ -71,7 +70,7 @@ public class GrammarTree extends MAryTree<String> {
 	 * Evalua si la palabra existe en el arbol gramatical
 	 * 
 	 * @param word
-	 * @return
+	 * @return true si la palabra si esta dentro del arbol
 	 */
 	public boolean wordBelongs(String word) {
 		if(!containsOnlyTerminalSymbol(word))
@@ -88,14 +87,21 @@ public class GrammarTree extends MAryTree<String> {
 			this.currentLevel++;
 			generateLevel(this.currentLevel);
 
-			if (childs(word, node, this.currentLevel))
+			if (isWordInChilds(word, node, this.currentLevel))
 				return true;
 		}
 
 		return false;
 	}
 
-	public boolean childs(String word, MAryNode<String> node, int level) {
+	/**
+	 * Metodo recursivo evalua si dentro del nodo y sus hijos existe posibilidad de que exista la palabra word
+	 * @param word palabra a buscar
+	 * @param node nodo al que sus hijos serán evaluados
+	 * @param level nivel respecto al nodo
+	 * @return
+	 */
+	public boolean isWordInChilds(String word, MAryNode<String> node, int level) {
 		for (int i = 0; i < node.getChilds().size(); i++) {
 			if (!containsNoTerminalSymbol(node.getChilds().get(i).data)) {
 				if (node.getChilds().get(i).data.length() == word.length())
@@ -112,7 +118,7 @@ public class GrammarTree extends MAryTree<String> {
 		for (int i = 0; i < node.getChilds().size(); i++) {
 			if (containsNoTerminalSymbol(node.getChilds().get(i).data)) {
 				if (removeNoTerminalSymbols(node.getChilds().get(i).data).length() < word.length())
-					if(childs(word, node.getChilds().get(i), this.currentLevel))
+					if(isWordInChilds(word, node.getChilds().get(i), this.currentLevel))
 						return true;
 				
 			}
@@ -121,6 +127,11 @@ public class GrammarTree extends MAryTree<String> {
 		return false;
 	}
 
+	/**
+	 * Genera todas las producciones que puedan salir de una palabra ingresada
+	 * @param word 
+	 * @return Todas las producciones generadas
+	 */
 	public String[][] productAll(String word) {
 		ArrayList<String[]> ps = new ArrayList<String[]>();
 
@@ -136,6 +147,11 @@ public class GrammarTree extends MAryTree<String> {
 		return ps.toArray(new String[0][0]);
 	}
 
+	/**
+	 * Remueve de la palabra todos los simbolos no terminales
+	 * @param word palabra a transformar
+	 * @return nueva palabra
+	 */
 	public String removeNoTerminalSymbols(String word) {
 		String w = word;
 
@@ -146,6 +162,11 @@ public class GrammarTree extends MAryTree<String> {
 		return w;
 	}
 
+	/**
+	 * Evalua si contiene al menos un simbolo no terminal
+	 * @param word palabra a evaluar
+	 * @return true si contiene un simbolo no terminal
+	 */
 	public boolean containsNoTerminalSymbol(String word) {
 		for (int i = 0; i < noTerminalSymbols.length; i++) {
 			if (word.contains(noTerminalSymbols[i] + ""))
@@ -155,6 +176,12 @@ public class GrammarTree extends MAryTree<String> {
 		return false;
 	}
 	
+	
+	/**
+	 * Evalua si la palabra contiene unicamente simbolos terminales
+	 * @param word palabra evaluada
+	 * @return true si solo contiene simbolos terminales
+	 */
 	public boolean containsOnlyTerminalSymbol(String word) {
 		String aux= word;
 		
@@ -164,7 +191,11 @@ public class GrammarTree extends MAryTree<String> {
 
 		return aux.contentEquals("");
 	}
-
+	
+	/**
+	 * Genera un nivel más en el arbol a partir del parametro
+	 * @param level nivel base
+	 */
 	public void generateLevel(int level) {
 		List<MAryNode<String>> nodes = this.getAllLevelNodes(level - 1);
 

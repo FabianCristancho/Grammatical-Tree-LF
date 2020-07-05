@@ -14,8 +14,8 @@ public class TestGrammarTree {
 
 	public static void main(String[] args) {
 		char initialSymbol = 'S';
-		char[] terminalSymbols = new char[] {'a','b'};
-		char[] noTerminalSymbols = new char[] {'S','A','T'};
+		String[] terminalSymbols = new String[] {"a","b"};
+		String[] noTerminalSymbols = new String[] {"S","A","T"};
 		
 		Production[] productions = new Production[] { 
 				new Production('S', "A", "λ"),

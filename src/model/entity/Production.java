@@ -7,10 +7,15 @@ package model.entity;
  *
  */
 public class Production {
-	protected char noTerminalSymbol;
+	protected String noTerminalSymbol;
 	protected String[] productions;
 
 	public Production(char noTerminalSymbol, String... productions) {
+		this.noTerminalSymbol = noTerminalSymbol+"";
+		this.productions = productions;
+	}
+	
+	public Production(String noTerminalSymbol, String... productions) {
 		this.noTerminalSymbol = noTerminalSymbol;
 		this.productions = productions;
 	}
@@ -32,5 +37,13 @@ public class Production {
 		}
 
 		return null;
+	}
+	
+	public String getNoTerminalSymbol() {
+		return noTerminalSymbol;
+	}
+	
+	public String[] getProductions() {
+		return productions;
 	}
 }
