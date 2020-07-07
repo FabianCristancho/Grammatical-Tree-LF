@@ -1,8 +1,8 @@
 package tests.grammar_tree;
 
 import model.entity.GrammarTree;
-import model.entity.MAryNode;
 import model.entity.Production;
+import model.operations.GrammarTreePrinter;
 
 /**
  * @author Andrés Felipe Chaparro Rosas
@@ -24,64 +24,8 @@ public class TestGrammarTree {
 				};
 		GrammarTree grammarTree = new GrammarTree(terminalSymbols, noTerminalSymbols, initialSymbol, productions);
 		
-		System.out.println(grammarTree.wordBelongs("aaaaab"));
+		System.out.println(grammarTree.wordBelongs("ab"));
 		
+		GrammarTreePrinter.printGrammarTree(grammarTree);
 	}
-	
-	/**
-	 * Imprime un arbol con los niveles dados
-	 * @param grammarTree
-	 * @param limitLevel
-	 */
-	public static void printGrammarTree(String[] tree) {
-		if (tree != null)
-			for (int i = 0; i < tree.length; i++) {
-				System.out.println(tree[i]);
-			}
-	}
-	
-	/**
-	 * Genera un arbol con los niveles dados
-	 * @param grammarTree
-	 * @param limitLevel
-	 */
-	public static void generateTree(GrammarTree grammarTree, int limitLevel) {
-		grammarTree.add(grammarTree.getProductions()[0], grammarTree.getRoot());
-		grammarTree.addByLevels(grammarTree.getRoot(), 2, limitLevel);
-	}
-	
-	/**
-	 * Informacion de un arbol para imprimir en consola
-	 * @param grammarTree
-	 * @param limitLevels
-	 * @return
-	 */
-	public static String[] getStringTree(GrammarTree grammarTree, int limitLevels) {
-		String[] tree = new String[limitLevels];
-
-		tree[0] = grammarTree.getRoot().getData();
-
-		makeLevels(grammarTree.getRoot(), tree, 1);
-
-		return tree;
-	}
-
-	/**
-	 * Construye los niveles para imprimir en consola
-	 * @param node
-	 * @param tree
-	 * @param level
-	 */
-	private static void makeLevels(MAryNode<String> node, String[] tree, int level) {
-		if (tree[level] == null)
-			tree[level] = "";
-
-		for (int i = 0; i < node.getChilds().size(); i++) {
-			tree[level] += node.getChilds().get(i).getData() + " ";
-
-			if (node.getChilds().get(i).getChilds().size() != 0)
-				makeLevels(node.getChilds().get(i), tree, level + 1);
-		}
-	}
-
 }

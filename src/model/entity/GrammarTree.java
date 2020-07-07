@@ -205,6 +205,10 @@ public class GrammarTree extends MAryTree<String> {
 			}
 		}
 	}
+	
+	public int getMaxLevel() {
+		return this.currentLevel;
+	}
 
 	public Production[] getProductions() {
 		return productions;

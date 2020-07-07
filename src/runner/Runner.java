@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import model.entity.GrammarTree;
 import model.entity.Production;
+import model.operations.GrammarTreePrinter;
 
 /**
  * @author Andrés Felipe Chaparro Rosas
@@ -48,5 +49,7 @@ public class Runner {
 		GrammarTree grammarTree = new GrammarTree(terminalSymbols, noTerminalSymbols, initialSymbol, productions);
 
 		System.out.println(grammarTree.wordBelongs(word));
+		
+		GrammarTreePrinter.printGrammarTree(grammarTree);
 	}
 }
