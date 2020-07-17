@@ -15,18 +15,32 @@ import model.operations.GrammarTreePrinter;
 public class Runner {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
+		System.out
+				.println("Como minimo debe ingresar dos simbolos terminales, tres no terminales y tres producciones.");
 
-		System.out.print("Introduzca los simbolos terminales. (ej: a,b,c,d) : ");
-		String[] terminalSymbols = s.nextLine().split(",");
+		String[] terminalSymbols;
 
-		System.out.print("Introduzca los simbolos no terminales. (ej: S,A) : ");
-		String[] noTerminalSymbols = s.nextLine().split(",");
+		do {
+			System.out.print("Introduzca al menos dos (2) simbolos terminales. (ej: a,b,c,d) : ");
+			terminalSymbols = s.nextLine().split(",");
+		} while (terminalSymbols.length < 2);
+
+		String[] noTerminalSymbols;
+
+		do {
+			System.out.print("Introduzca al menos tres (3) simbolos no terminales. (ej: S,A) : ");
+			noTerminalSymbols = s.nextLine().split(",");
+		} while (noTerminalSymbols.length < 3);
 
 		System.out.print("Introduzca el simbolo inicial axiomatico: ");
 		char initialSymbol = s.nextLine().charAt(0);
 
-		System.out.println("Introduzca el numero producciones: ");
-		int qProductions = s.nextInt();
+		int qProductions;
+
+		do {
+			System.out.println("Introduzca el numero producciones (Minimo 3): ");
+			qProductions = s.nextInt();
+		} while (qProductions < 3);
 
 		System.out.println("Seguido cada linea siguiente corresponde a una produccion.\n"
 				+ "Debe seguir el siguiente formato: simbolo no terminal;produccion produccion produccion (ej. A;aA Ab c)");
@@ -49,7 +63,7 @@ public class Runner {
 		GrammarTree grammarTree = new GrammarTree(terminalSymbols, noTerminalSymbols, initialSymbol, productions);
 
 		System.out.println(grammarTree.wordBelongs(word));
-		
+
 		GrammarTreePrinter.printGrammarTree(grammarTree);
 	}
 }
