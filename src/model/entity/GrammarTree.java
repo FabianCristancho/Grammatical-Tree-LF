@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Andrés Felipe Chaparro Rosas
+ * @author Andrés Felipe Chaparro Rosas | Yohan Caro | Fabian Cristancho
  * @date 21/04/2020
  * @version 1.0
  *

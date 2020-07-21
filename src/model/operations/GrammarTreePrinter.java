@@ -4,7 +4,7 @@ import model.entity.GrammarTree;
 import model.entity.MAryNode;
 
 /**
- * @author Andrés Felipe Chaparro Rosas
+ * @author Andrés Felipe Chaparro Rosas | Yohan Caro | Fabian Cristancho
  * @date 6/07/2020
  * @version 1.0
  *

@@ -7,7 +7,7 @@ import model.entity.Production;
 import model.operations.GrammarTreePrinter;
 
 /**
- * @author Andrés Felipe Chaparro Rosas
+ * @author Andrés Felipe Chaparro Rosas | Yohan Caro | Fabian Cristancho
  * @date 4/06/2020
  * @version 1.0
  *

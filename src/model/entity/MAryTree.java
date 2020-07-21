@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author
- * @date 01/10/2019
+ * 
+ * @author Andrés Felipe Chaparro Rosas | Yohan Caro | Fabian Cristancho
+ * @date 01/10/20219
  * @version 1.0
- *
+ * @param <T>
  */
 public class MAryTree<T> {
 	protected MAryNode<T> root;

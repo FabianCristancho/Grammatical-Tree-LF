@@ -1,7 +1,7 @@
 package model.entity;
 
 /**
- * @author Andrés Felipe Chaparro Rosas
+ * @author Andrés Felipe Chaparro Rosas | Yohan Caro | Fabian Cristancho
  * @date 25/06/2020
  * @version 1.0
  *

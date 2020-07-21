@@ -1,14 +1,15 @@
 package model.entity;
-/**
- * @author
- * @date 01/10/2019
- * @version 1.0
- *
- */
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Andrés Felipe Chaparro Rosas | Yohan Caro | Fabian Cristancho
+ * @date 01/10/20219
+ * @version 1.0
+ * @param <T>
+ */
 public class MAryNode<T> {
 	protected int level;
 	protected T data;
@@ -33,7 +34,6 @@ public class MAryNode<T> {
 			this.level = this.parent.level + 1;
 		else
 			this.level = 0;
-		
 	}
 
 	public T getData() {
